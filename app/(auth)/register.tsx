@@ -8,14 +8,16 @@ interface FormData {
     password: string,
     confirmPassword: string
 }
-const RegisterScreen: React.Fc = () => {
-  const [formData, setFormData] = useState<FormData>({
+
+const RegisterScreen = () => {
+  const [formData, setFormData] = useState<{email: string, password: string, confirmPassword: string }>({
     email: "",
     password: "",
     confirmPassword: "",
   });
+
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{email?: string, password?: string, confirmPassword?: string}>({});
 
   const validateForm = () => {
     const newErrors = {};
@@ -74,7 +76,7 @@ const RegisterScreen: React.Fc = () => {
     }
   };
 
-  const handleChange = (field, value) => {
+  const handleChange = (field: "email" | "password", value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
@@ -82,7 +84,7 @@ const RegisterScreen: React.Fc = () => {
     }
   };
 
-  const login = () => {
+  const Login = () => {
     router.push('/login')
   }
   return (
@@ -166,9 +168,7 @@ const RegisterScreen: React.Fc = () => {
                   {errors.confirmPassword}
                 </Text>
               )}
-            </View>
-
-        
+            </View>        
             <TouchableOpacity
               className={`bg-blue-600 rounded-xl py-4 items-center justify-center ${
                 loading ? "opacity-70" : ""
@@ -208,3 +208,4 @@ const RegisterScreen: React.Fc = () => {
 };
 
 export default RegisterScreen;
+ 
