@@ -30,7 +30,7 @@ const Register = () => {
         className="flex-1 bg-gray-50"
     >
         <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps="handled">
-            <View className="px-6 pb-9 flex-1 pt-20">
+            <View className="px-6 pb-5 flex-1 pt-20">
                 <View className="items-center mb-10">
                     <Text className="text-4xl font-semibold mb-2">
                         Welcom back
@@ -39,7 +39,7 @@ const Register = () => {
                         Login to your Account
                     </Text>
 
-                    <View className="bg-gray-50 p-6 rounded-md shadow-lg">
+                    <View className="mt-10 w-full bg-gray-50 p-6 rounded-md shadow-xl">
                         <View>
                             <Text className="font-medium text-gray-700 mb-2">Email</Text>
                             <TextInput className={`border px-4 py-3 rounded-xl text-base ${
@@ -58,10 +58,10 @@ const Register = () => {
                             
                         </View>
                         
-                        <View>
-                            <Text className="font-medium text-gray-700 mb-2">Password</Text>
+                        <View className="mt-5">
+                            <Text className="font-medium text-gray-700 mb-3">Password</Text>
                             <TextInput
-                                className={`font-medium border text-gray-700 mb-2 ${
+                                className={`font-medium border rounded-xl text-base px-5 py-3 text-gray-700 mb-2 ${
                                     error.password ? "border-e-red-500" : "border-gray-300"
                                 }`}
                                 secureTextEntry
@@ -74,7 +74,7 @@ const Register = () => {
                              )}    
                         </View>
                         <TouchableOpacity 
-                        className={`bg-green-500 py-4 items-center rounded-xl ${
+                        className={`bg-green-500 py-4 items-center mt-5 rounded-xl ${
                             loading ? "opacity-70" : ""
                         }`}
                             onPress={login}
@@ -84,10 +84,15 @@ const Register = () => {
                             {loading ? (
                                 <ActivityIndicator/>
                             ): (
-                                <Text className="font-bold text-xl">Register</Text>
+                                <Text className="font-bold text-xl text-white">Login</Text>
                             )}
 
                         </TouchableOpacity>
+                                    <Text className="text-center text-gray-500 text-sm mt-6">
+              By registering, you agree to our{" "}
+              <Text className="text-blue-600">Terms of Service</Text> and{" "}
+              <Text className="text-blue-600">Privacy Policy</Text>
+            </Text>
                     </View>
                     
                 </View>
