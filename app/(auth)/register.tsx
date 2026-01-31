@@ -169,7 +169,7 @@ const RegisterScreen = () => {
                 </Text>
               )}
             </View>        
-            <Touchable Opacity
+            <TouchableOpacity
               className={`bg-blue-600 rounded-xl py-4 items-center justify-center ${
                 loading ? "opacity-70" : ""
               }`}
@@ -184,7 +184,7 @@ const RegisterScreen = () => {
                   Register
                 </Text>
               )}
-            </Touchable>
+            </TouchableOpacity>
 
              
             <Text className="text-center text-gray-500 text-sm mt-6">

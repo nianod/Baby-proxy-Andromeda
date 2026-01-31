@@ -1,3 +1,4 @@
+import { router } from "expo-router"
 import { useState } from "react"
 import { KeyboardAvoidingView, Platform, View, Text, TextInput } from "react-native"
 import { ScrollView } from "react-native"
@@ -17,6 +18,10 @@ const LoginScreen = () => {
 }
 const login = () => {
 
+} 
+
+const Register = () => {
+    router.push('/register')
 }
 
   return (
@@ -25,8 +30,8 @@ const login = () => {
         className="flex-1 bg-gray-50"
     >
         <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps="handled">
-            <View className="mt-10 pb-9 flex-1 pt-20">
-                <View className="items-center flex-1">
+            <View className="px-6 pb-9 flex-1 pt-20">
+                <View className="items-center mb-10">
                     <Text className="text-4xl font-semibold mb-2">
                         Welcom back
                     </Text>
@@ -84,6 +89,12 @@ const login = () => {
                         </TouchableOpacity>
                     </View>
                     
+                </View>
+                <View>
+                    <Text>Don't have an account?</Text>
+                    <TouchableOpacity>
+                        <Text onPress={Register}>Sign up</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>
