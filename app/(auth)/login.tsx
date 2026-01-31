@@ -43,7 +43,7 @@ const Register = () => {
                         <View>
                             <Text className="font-medium text-gray-700 mb-2">Email</Text>
                             <TextInput className={`border px-4 py-3 rounded-xl text-base ${
-                                error ? "border-red-500" : "border-gray-300"
+                                error.email ? "border-red-500" : "border-gray-300"
                             }`}
                              placeholder="Enter your email address"
                              autoCapitalize="none"
@@ -57,11 +57,12 @@ const Register = () => {
                                )}
                             
                         </View>
+                        
                         <View>
                             <Text className="font-medium text-gray-700 mb-2">Password</Text>
                             <TextInput
                                 className={`font-medium border text-gray-700 mb-2 ${
-                                    error ? "border-e-red-500" : "border-gray-300"
+                                    error.password ? "border-e-red-500" : "border-gray-300"
                                 }`}
                                 secureTextEntry
                                 placeholder="Type your password here"
@@ -90,10 +91,10 @@ const Register = () => {
                     </View>
                     
                 </View>
-                <View>
+                <View className="flex-row justify-center gap-1">
                     <Text>Don't have an account?</Text>
                     <TouchableOpacity>
-                        <Text onPress={Register}>Sign up</Text>
+                        <Text className="text-blue-500 font-semibold" onPress={Register}>Sign up</Text>
                     </TouchableOpacity>
                 </View>
             </View>
