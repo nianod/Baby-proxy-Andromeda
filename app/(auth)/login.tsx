@@ -3,6 +3,7 @@ import { useState } from "react"
 import { KeyboardAvoidingView, Platform, View, Text, TextInput } from "react-native"
 import { ScrollView } from "react-native"
 import { TouchableOpacity, ActivityIndicator } from "react-native"
+ 
 const LoginScreen = () => {
     const [formData, setFormData] = useState<{email: string, password: string}>({ 
         email: "",

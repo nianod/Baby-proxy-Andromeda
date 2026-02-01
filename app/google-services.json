@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "637099970937",
+    "project_id": "baby-proxy-f36be",
+    "storage_bucket": "baby-proxy-f36be.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637099970937:android:0bd2c4b978934fdeb11fa8",
+        "android_client_info": {
+          "package_name": "baby.proxy1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRA3zmqZi_qKDaFhlhqn1o1BBkqfOi_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
