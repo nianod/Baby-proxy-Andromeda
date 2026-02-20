@@ -3,7 +3,8 @@ import { useState } from "react"
 import { KeyboardAvoidingView, Platform, View, Text, TextInput } from "react-native"
 import { ScrollView } from "react-native"
 import { TouchableOpacity, ActivityIndicator } from "react-native"
- 
+import {supabase} from '../lib/supabase'
+
 const LoginScreen = () => {
     const [formData, setFormData] = useState<{email: string, password: string}>({ 
         email: "",
@@ -17,8 +18,39 @@ const LoginScreen = () => {
     setError(prev => ({ ...prev, [field]: "" }))
   }
 }
-const login = () => {
+const  login = async () => {
+    //basic validation
+    if(!formData.email || !formData.password){
+        setError( {email: formData.email ? "" : "Email is require" , password: formData.password ? "" : "Password is required"})
+        return;
+    }
 
+    setLoading(true)
+    setError({ email: "", password: ""})
+
+    try{
+        const {error: authError} = await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password
+        })
+
+        if(authError) {
+            if(authError.messasge.includes("invalide login credential")) {
+                setError({email: "", password: 'Invalid email or password'})
+            } else{
+                setError({ email: "", password: authError.messasge })
+            }
+            return
+            
+        }
+
+        router.replace('/pages/dashboard')
+
+    } catch(err){
+        setError({email: "", password: "login failed brother. Tyr again sir"})
+    } finally{
+        setLoading(false)
+    }
 } 
 
 const Register = () => {
