@@ -28,13 +28,13 @@ const Register = () => {
   return (
     <KeyboardAvoidingView
         behavior={Platform.OS === "android" ? "height" : "padding"}
-        className="flex-1 bg-gray-50"
+        className="flex-1 bg-gray-50 justify-center"
     >
         <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps="handled">
             <View className="px-6 pb-5 flex-1 pt-20">
                 <View className="items-center mb-10">
                     <Text className="text-4xl font-semibold mb-2">
-                        Welcom back
+                        Welcome back
                     </Text>
                     <Text className="text-xl">
                         Login to your Account

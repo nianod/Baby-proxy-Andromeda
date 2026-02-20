@@ -1,9 +1,8 @@
- import '../global.css'
- //app/(public)/_layout.tsx
+import '../global.css'
 import { Stack } from "expo-router";
 
-export default function PublicLayout() {  // ← 1. Add "export default function"
-  return (                                 // ← 2. Add "return"
+export default function PublicLayout() {   
+  return (                                 
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" options={{title: "Home"}}/> 
       <Stack.Screen name="login" />
@@ -11,3 +10,4 @@ export default function PublicLayout() {  // ← 1. Add "export default function
     </Stack>
   );                                         
 }
+

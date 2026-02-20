@@ -49,7 +49,7 @@ const RegisterScreen = () => {
     
     setLoading(true);
     try {
-      // Simulate API call
+      
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       Alert.alert(
@@ -57,8 +57,7 @@ const RegisterScreen = () => {
         "Registration successful!",
         [{ text: "OK" }]
       );
-      
-      // Reset form after successful registration
+       
       setFormData({
         email: "",
         password: "",
@@ -78,7 +77,7 @@ const RegisterScreen = () => {
 
   const handleChange = (field: "email" | "password", value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
+     
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
@@ -97,7 +96,7 @@ const RegisterScreen = () => {
         keyboardShouldPersistTaps="handled"
       >
         <View className="flex-1 px-6 pt-20 pb-10">
-          {/* Header */}
+       
           <View className="items-center mb-10">
             <Text className="text-4xl font-bold text-gray-800 mb-2">
               Welcome
@@ -116,7 +115,7 @@ const RegisterScreen = () => {
               </Text>
               <TextInput
                 className={`border rounded-xl px-4 py-3 text-base ${
-                  errors.email ? "border-red-500" : "border-gray-300"
+                  errors.email ? "border-red-500" : "border-green-500"
                 }`}
                 onChangeText={(value) => handleChange("email", value)}
                 value={formData.email}
@@ -137,7 +136,7 @@ const RegisterScreen = () => {
               </Text>
               <TextInput
                 className={`border rounded-xl px-4 py-3 text-base ${
-                  errors.password ? "border-red-500" : "border-gray-300"
+                  errors.password ? "border-red-500" : "border-green-500"
                 }`}
                 onChangeText={(value) => handleChange("password", value)}
                 value={formData.password}
@@ -156,7 +155,7 @@ const RegisterScreen = () => {
               </Text>
               <TextInput
                 className={`border rounded-xl px-4 py-3 text-base ${
-                  errors.confirmPassword ? "border-red-500" : "border-gray-300"
+                  errors.confirmPassword ? "border-red-500" : "border-green-600"
                 }`}
                 onChangeText={(value) => handleChange("confirmPassword", value)}
                 value={formData.confirmPassword}

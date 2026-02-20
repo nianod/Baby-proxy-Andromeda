@@ -10,10 +10,10 @@ const App = () => {
         Welcome to Andromeda
       </Text>
       <View>
-        <Text className="text-5xl text-blue-500 ">Continue to login</Text>
+        <Text className="text-5xl text-black font-bold">Continue to login</Text>
       </View>
       <View >
-        <Link className="text-xl flex items-center gap-6" href="/login">
+        <Link className="text-2xl font-semibold flex items-center gap-6 " href="/login">
           Login here <AntDesign name="login" color="#000" size={24} />
         </Link>
       </View>
