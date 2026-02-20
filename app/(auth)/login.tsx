@@ -35,16 +35,16 @@ const  login = async () => {
         })
 
         if(authError) {
-            if(authError.messasge.includes("invalide login credential")) {
+            if(authError.message.includes("invalide login credential")) {
                 setError({email: "", password: 'Invalid email or password'})
             } else{
-                setError({ email: "", password: authError.messasge })
+                setError({ email: "", password: authError.message })
             }
             return
             
         }
 
-        router.replace('/pages/dashboard')
+        router.replace('../dashboard')
 
     } catch(err){
         setError({email: "", password: "login failed brother. Tyr again sir"})
