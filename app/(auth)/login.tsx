@@ -12,6 +12,8 @@ const LoginScreen = () => {
     })
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<{email?: string, password?: string}>({})
+
+    
   const handleChange = (field: "email" | "password", value: string) => {
   setFormData(prev => ({ ...prev, [field]: value }))
   if (error[field]) {

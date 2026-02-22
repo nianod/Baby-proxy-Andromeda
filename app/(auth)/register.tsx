@@ -1,7 +1,7 @@
 import {View,Text,TextInput,TouchableOpacity,KeyboardAvoidingView,Platform,ScrollView,ActivityIndicator,Alert} from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";
-import { Register } from "../types/authtypes";
+import { supabase } from "../lib/supabase";
 
 interface FormData { 
     email: string,
@@ -17,6 +17,7 @@ const RegisterScreen = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('')
   const [errors, setErrors] = useState<{email?: string, password?: string, confirmPassword?: string}>({});
 
   const validateForm = () => {
@@ -46,25 +47,39 @@ const RegisterScreen = () => {
     if (!validateForm()) {
       return;
     }
-    
+    setError('')
     setLoading(true);
     try {
-      
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      Alert.alert(
-        "Success",
-        "Registration successful!",
-        [{ text: "OK" }]
-      );
-       
-      setFormData({
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      setErrors({});
+   
+       const { error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password
+       })
+       if(authError) {
+        setError(authError.message)
+        return
+       }
+       await new Promise(resolve => setTimeout(resolve, 1000))
+
+       Alert.alert(
+        "success",
+        "Registration successful",
+        [{ text: "OK"}]
+       )
+
+       router.replace('/pages/dashboard')
+
+       if(authError)
+        setFormData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+       setErrors({});
+
+
     } catch (error) {
+      setError('Error occures')
       Alert.alert(
         "Error",
         "Registration failed. Please try again.",
@@ -75,7 +90,7 @@ const RegisterScreen = () => {
     }
   };
 
-  const handleChange = (field: "email" | "password", value: any) => {
+  const handleChange = (field: "email" | "password" | "confirmPassword", value: String) => {
     setFormData(prev => ({ ...prev, [field]: value }));
      
     if (errors[field]) {
@@ -167,7 +182,8 @@ const RegisterScreen = () => {
                   {errors.confirmPassword}
                 </Text>
               )}
-            </View>        
+            </View> 
+            <View>       
             <TouchableOpacity
               className={`bg-green-600  rounded-xl py-4 items-center justify-center ${
                 loading ? "opacity-70" : ""
@@ -184,6 +200,10 @@ const RegisterScreen = () => {
                 </Text>
               )}
             </TouchableOpacity>
+            {error && (
+              <Text className="text-red-500 text-sm mt-2 text-center">{error}</Text>
+            )}
+            </View>
 
              
             <Text className="text-center text-gray-500 text-sm mt-6">
