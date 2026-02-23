@@ -46,7 +46,7 @@ const  login = async () => {
             
         }
 
-        router.replace('../dashboard')
+        router.replace('../pages/dashboard')
 
     } catch(err){
         setError({email: "", password: "login failed brother. Tyr again sir"})
