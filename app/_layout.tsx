@@ -8,7 +8,7 @@ export default function PublicLayout() {
       <Stack.Screen name="index" options={{title: "Home"}}/> 
       <Stack.Screen name="login" />
       <Stack.Screen name="register" />
-      <Stack.Screen name="pages/dashboard" />
+      <Stack.Screen name="pages/Dashboard" />
     </Stack>
   );                                         
 }

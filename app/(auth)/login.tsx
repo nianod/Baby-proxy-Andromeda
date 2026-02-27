@@ -46,7 +46,7 @@ const  login = async () => {
             
         }
 
-        router.replace('../pages/dashboard')
+        router.replace('../pages/Dashboard')
 
     } catch(err){
         setError({email: "", password: "login failed brother. Tyr again sir"})
@@ -56,7 +56,7 @@ const  login = async () => {
 } 
 
 const Register = () => {
-    router.push('/register')
+    router.push('/(auth)/register')
 }
 
   return (
