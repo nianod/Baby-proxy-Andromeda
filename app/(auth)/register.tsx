@@ -70,7 +70,7 @@ const RegisterScreen = () => {
 
       Alert.alert("success", "Registration successful", [{ text: "OK" }]);
 
-      router.replace("../pages/dashboard");
+      router.replace("../pages/Dashboard");
 
       if (authError)
         setFormData({
@@ -101,7 +101,7 @@ const RegisterScreen = () => {
   };
 
   const Login = () => {
-    router.push("/login");
+    router.push("/(auth)/login");
   };
   return (
     <KeyboardAvoidingView
@@ -206,7 +206,7 @@ const RegisterScreen = () => {
               )}
             </View>
               <Text className="text-center mt-3 font-bold text-xl">OR</Text>
-              
+
               <View className=" flex flex-row justify-center gap-3 mt-5">
                 <TouchableOpacity className="">
                     <Image

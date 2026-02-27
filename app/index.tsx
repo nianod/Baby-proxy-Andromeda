@@ -12,7 +12,7 @@ const App = () => {
         <Text className="text-5xl text-black font-bold">Continue to login</Text>
       </View>
       <View >
-        <Link className="text-2xl font-semibold flex items-center gap-6 " href="/login">
+        <Link className="text-2xl font-semibold flex items-center gap-6 " href="/(auth)/login">
           Login here <AntDesign name="login" color="#000" size={24} />
         </Link>
       </View>
