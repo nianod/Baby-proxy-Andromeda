@@ -1,8 +1,11 @@
 import React from 'react'
+import { View } from 'react-native'
 
 const Dashboard = () => {
   return (
-    <div>dashboard</div>
+    <View> 
+      
+    </View>
   )
 }
 
