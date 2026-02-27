@@ -1,18 +1,8 @@
 import { router } from "expo-router";
 import { useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Alert, Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View,} from "react-native";
 import { supabase } from "../lib/supabase";
-
+ 
 interface FormData {
   email: string;
   password: string;
@@ -215,7 +205,24 @@ const RegisterScreen = () => {
                 </Text>
               )}
             </View>
-
+              <Text className="text-center mt-3 font-bold text-xl">OR</Text>
+              
+              <View className=" flex flex-row justify-center gap-3 mt-5">
+                <TouchableOpacity className="">
+                    <Image
+                      source={require('../../assets/download.png')}
+                      style={{width: 40, height: 40}} 
+                      resizeMode="contain"
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Image
+                    source={require('../../assets/github.png')}
+                    style={{width: 40, height: 40}} 
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
             <Text className="text-center text-gray-500 text-sm mt-6">
               By registering, you agree to our{" "}
               <Text className="text-blue-600">Terms of Service</Text> and{" "}

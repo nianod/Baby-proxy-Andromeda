@@ -1,4 +1,3 @@
-//app/(public)/index.tsx
 import { View, Text, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 import AntDesign from "react-native-vector-icons/AntDesign";
