@@ -70,7 +70,7 @@ const RegisterScreen = () => {
 
       Alert.alert("success", "Registration successful", [{ text: "OK" }]);
 
-      router.replace("../pages/Dashboard");
+      router.replace("/pages/Dashboard");
 
       if (authError)
         setFormData({
