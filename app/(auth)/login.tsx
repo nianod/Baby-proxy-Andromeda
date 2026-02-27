@@ -65,7 +65,7 @@ const Register = () => {
         className="flex-1 bg-gray-50 justify-center"
     >
         <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps="handled">
-            <View className="px-6 pb-5 flex-1 pt-20">
+            <View className="min-h-screen px-6 pb-5 flex-1 pt-20">
                 <View className="items-center mb-10">
                     <Text className="text-4xl font-semibold mb-2">
                         Welcome back
@@ -78,7 +78,7 @@ const Register = () => {
                         <View>
                             <Text className="font-medium text-gray-700 mb-2">Email</Text>
                             <TextInput className={`border px-4 py-3 rounded-xl text-base ${
-                                error.email ? "border-red-500" : "border-gray-300"
+                                error.email ? "border-red-500" : "border-green-500"
                             }`}
                              placeholder="Enter your email address"
                              autoCapitalize="none"
@@ -97,7 +97,7 @@ const Register = () => {
                             <Text className="font-medium text-gray-700 mb-3">Password</Text>
                             <TextInput
                                 className={`font-medium border rounded-xl text-base px-5 py-3 text-gray-700 mb-2 ${
-                                    error.password ? "border-e-red-500" : "border-gray-300"
+                                    error.password ? "border-e-red-500" : "border-green-500"
                                 }`}
                                 secureTextEntry
                                 placeholder="Type your password here"
