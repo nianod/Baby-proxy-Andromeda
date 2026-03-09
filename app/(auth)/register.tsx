@@ -14,10 +14,12 @@ const RegisterScreen = () => {
     email: string;
     password: string;
     confirmPassword: string;
+    name: string;
   }>({
     email: "",
     password: "",
     confirmPassword: "",
+    name: ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -26,6 +28,7 @@ const RegisterScreen = () => {
     email?: string;
     password?: string;
     confirmPassword?: string;
+    name?: string;
   }>({});
 
   const validateForm = () => {
@@ -61,6 +64,11 @@ const RegisterScreen = () => {
       const { error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
+        options: {
+          data: {
+            name: formData.name
+          }
+        }
       });
       if (authError) {
         setError(authError.message);
@@ -75,6 +83,7 @@ const RegisterScreen = () => {
       if (authError)
         setFormData({
           email: "",
+          name: "",
           password: "",
           confirmPassword: "",
         });
@@ -90,7 +99,7 @@ const RegisterScreen = () => {
   };
 
   const handleChange = (
-    field: "email" | "password" | "confirmPassword",
+    field: "email" |"name" | "password" | "confirmPassword",
     value: String,
   ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -139,6 +148,28 @@ const RegisterScreen = () => {
               {errors.email && (
                 <Text className="text-red-500 text-sm mt-1">
                   {errors.email}
+                </Text>
+              )}
+            </View>
+
+             <View className="mb-6">
+              <Text className="text-gray-700 font-medium mb-2 ">
+                Custom Name
+              </Text>
+              <TextInput
+                className={`border rounded-xl px-4 py-3 text-base ${
+                  errors.name ? "border-red-500" : "border-green-500"
+                }`}
+                onChangeText={(value) => handleChange("name", value)}
+                value={formData.name}
+                placeholder="Enter your name"
+                keyboardType="default"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              {errors.name && (
+                <Text className="text-red-500 text-sm mt-1">
+                  {errors.name}
                 </Text>
               )}
             </View>
