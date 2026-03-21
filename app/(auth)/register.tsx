@@ -32,7 +32,7 @@ const RegisterScreen = () => {
   }>({});
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: Record<string, string> = {};
 
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -61,7 +61,7 @@ const RegisterScreen = () => {
     setError("");
     setLoading(true);
     try {
-      const { error: authError } = await supabase.auth.signUp({
+      const { data, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
@@ -70,26 +70,44 @@ const RegisterScreen = () => {
           }
         }
       });
+
       if (authError) {
         setError(authError.message);
         return;
       }
+ 
+      const user = data.user;
+      if (user) {
+        const userInfo = {
+          id: user.id,
+          email: user.email,
+          name: formData.name
+        };
+        const { error: insertError } = await supabase
+          .from('users')
+          .insert([userInfo]);
+
+        if (insertError) {
+          setError(insertError.message);
+          return;
+        }
+      }
+
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      Alert.alert("success", "Registration successful", [{ text: "OK" }]);
+      Alert.alert("Success", "Registration successful", [{ text: "OK" }]);
 
       router.replace("/pages/Dashboard");
 
-      if (authError)
-        setFormData({
-          email: "",
-          name: "",
-          password: "",
-          confirmPassword: "",
-        });
+      setFormData({
+        email: "",
+        name: "",
+        password: "",
+        confirmPassword: "",
+      });
       setErrors({});
     } catch (error) {
-      setError("Error occures");
+      setError("Error occurred");
       Alert.alert("Error", "Registration failed. Please try again.", [
         { text: "OK" },
       ]);
@@ -99,8 +117,8 @@ const RegisterScreen = () => {
   };
 
   const handleChange = (
-    field: "email" |"name" | "password" | "confirmPassword",
-    value: String,
+    field: "email" | "name" | "password" | "confirmPassword",
+    value: string,
   ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
@@ -276,3 +294,4 @@ const RegisterScreen = () => {
 };
 
 export default RegisterScreen;
+
