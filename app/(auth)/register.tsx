@@ -79,7 +79,7 @@ const RegisterScreen = () => {
       const user = data.user;
       if (user) {
         const userInfo = {
-          id: user.id,
+          user_id: user.id,
           email: user.email,
           name: formData.name
         };
