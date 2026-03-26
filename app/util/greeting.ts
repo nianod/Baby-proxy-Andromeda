@@ -10,7 +10,7 @@ const greeting = () => {
         return " Good Afternoon"
     }
 
-     else return "Good evening"
+     else return "Good Evening"
 }
 
 export default greeting

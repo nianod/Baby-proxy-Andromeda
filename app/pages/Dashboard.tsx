@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, KeyboardAvoidingView, TouchableOpacity, Platform, ScrollView, TextInput } from "react-native";
 import greeting from "../util/greeting";
 import { Ionicons } from "@expo/vector-icons"
-import useUser from "../hooks/fetchUsers";
+import useUser from "../hooks/fetchUsers"
+import { Link } from "expo-router";
 
 const Dashboard = () => {
   const [task, setTask] = useState<string>('')
@@ -11,19 +12,23 @@ const Dashboard = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "android" ? "height" : "padding"}
-      className="flex-1 bg-gradient-to-b from-blue-50 to-gray-100"
+      className="flex-1 bg-white/40"
     >
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 20 }}
         keyboardShouldPersistTaps="handled"
       >
+        <View className="bg-gray-400">
+          <Text className="text-lg font-bold">
+            Manage your Task with Andromeda
+          </Text>
         <View className="bg-white rounded-lg shadow-lg p-6 mx-4">
           <Text className="text-2xl font-bold text-gray-800 text-center mb-4">
-            {greeting()} {user?.name}
+            {greeting()} {user?.name.toLocaleUpperCase()}
           </Text>
           <View className="mb-4">
             <Text className="text-lg text-gray-600 text-center">
-              What do you wanna do this morning?
+              What do you wanna do this {greeting().split(" ")[0]}
             </Text>
           </View>
           <View className="mb-6">
@@ -41,6 +46,10 @@ const Dashboard = () => {
                 <Ionicons name="add" size={26} color="white" />
               </TouchableOpacity>
             </View>
+          </View>
+          </View>
+          <View>
+            <Link href="/(pages)/Dashboard"></Link>
           </View>
         </View>
       </ScrollView>
