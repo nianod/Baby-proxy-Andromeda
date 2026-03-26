@@ -17,7 +17,7 @@ const useUser = () => {
   const fetchUser = async () => {
     try {
       setLoading(true);
-      const { data: { user: authUser } } = await supabase.auth.getUser();
+      const { data: { user: authUser } } = await supabase.auth.getUser()
 
       if (!authUser) {
         setError("No authenticated user found");

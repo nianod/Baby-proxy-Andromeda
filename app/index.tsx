@@ -5,15 +5,15 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 const App = () => {
   return (
     <View style={styles.container} className="gap-10">
-      <Text style={styles.text} className="text-7xl mt-20">
+      <Text style={styles.text} className="text-6xl mt-20">
         Welcome to Andromeda
       </Text>
       <View>
         <Text className="text-5xl text-black font-bold">Continue to login</Text>
       </View>
       <View >
-        <Link className="text-2xl font-semibold flex items-center gap-6 " href="/(auth)/login">
-          Login here <AntDesign name="login" color="#000" size={24} />
+        <Link className="text-2xl font-semibold flex items-center gap-6 bg-blue-500 p-4 rounded text-white px-5" href="/(auth)/login">
+          Login here <AntDesign name="login" color="#fff" size={24} />
         </Link>
       </View>
     </View>
