@@ -20,6 +20,20 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
+            "intentFilters": [  
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "myapp",
+              "host": "auth-callback"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
       "package": "com.anonymous.myApp"
     },
     "web": {
@@ -46,4 +60,3 @@
       "reactCompiler": true
     }
   }
-}
