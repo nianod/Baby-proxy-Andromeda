@@ -129,7 +129,21 @@ const RegisterScreen = () => {
 
   const Login = () => {
     router.push("/(auth)/login");
-  };
+  }
+
+  const callGoogleAuth = async() => {
+    const {data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "myapp://auth-callback"
+      }
+    })
+
+    if (error) {
+      Alert.alert("error", error.message)
+    }
+    
+  }
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -257,7 +271,7 @@ const RegisterScreen = () => {
               <Text className="text-center mt-3 font-bold text-xl">OR</Text>
 
               <View className=" flex flex-row justify-center gap-3 mt-5">
-                <TouchableOpacity className="">
+                <TouchableOpacity className="" onPress={callGoogleAuth}>
                     <Image
                       source={require('../../assets/download.png')}
                       style={{width: 40, height: 40}} 
