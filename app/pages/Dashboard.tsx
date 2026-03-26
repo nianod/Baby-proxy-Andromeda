@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, KeyboardAvoidingView, TouchableOpacity, Platform, ScrollView, TextInput } from "react-native";
 import greeting from "../util/greeting";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons"
+import useUser from "../hooks/fetchUsers";
 
 const Dashboard = () => {
-  const [task, setTask] = useState<string>('');
+  const [task, setTask] = useState<string>('')
+  const { loading, error, user } = useUser()
 
   return (
     <KeyboardAvoidingView
@@ -17,7 +19,7 @@ const Dashboard = () => {
       >
         <View className="bg-white rounded-lg shadow-lg p-6 mx-4">
           <Text className="text-2xl font-bold text-gray-800 text-center mb-4">
-            {greeting()}
+            {greeting()} {user?.name}
           </Text>
           <View className="mb-4">
             <Text className="text-lg text-gray-600 text-center">
