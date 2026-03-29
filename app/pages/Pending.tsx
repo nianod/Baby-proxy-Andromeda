@@ -1,9 +1,14 @@
 import React from 'react'
+import { View, Text} from 'react-native'
 
-const Pending = () => {
+const Completed = () => {
   return (
-    <div>Pending</div>
+    <View>
+      <Text>
+        Pending stuff here
+      </Text>
+    </View>
   )
 }
 
-export default Pending
+export default Completed

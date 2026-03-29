@@ -5,7 +5,7 @@ const Completed = () => {
   return (
     <View>
       <Text>
-        Completed stuff here
+         Aborted stuff here
       </Text>
     </View>
   )
